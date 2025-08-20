@@ -9,14 +9,15 @@ This is a dose tracking application built with [Expo](https://expo.dev) and crea
 ### Android APK
 - **Latest Version**: [Download APK v1.0.1](https://github.com/saadpocalypse/dozer/releases/latest/download/app-release.apk)
 - **Direct Download**: [v1.0.1 APK](https://github.com/saadpocalypse/dozer/releases/download/v1.0.1/app-release.apk)
+- **GitHub Release**: [View Release & Download](https://github.com/saadpocalypse/dozer/releases/tag/v1.0.1)
 
 ### Installation Instructions
-1. Download the APK file
+1. Download the APK file from the links above
 2. Enable "Install from Unknown Sources" in your Android settings
 3. Open the downloaded APK file
 4. Follow the installation prompts
 
-**Note**: APK builds are generated automatically and will be available here once the first build is completed.
+**Note**: APK is now available for download! 🎉
 
 ## Get started
 
