@@ -1,10 +1,10 @@
-# Dozer - Dose Tracking App 💊
+# Dozer - Dose Tracking App
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This is a dose tracking application built with [Expo](https://expo.dev) and created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## 📱 Download
+## Download
 
 ### Android APK
 - **Latest Version**: [Download APK v1.0.1](https://github.com/saadpocalypse/dozer/releases/latest/download/dozer.apk)
@@ -17,7 +17,7 @@ This is a dose tracking application built with [Expo](https://expo.dev) and crea
 3. Open the downloaded APK file
 4. Follow the installation prompts
 
-**Note**: APK is now available for download! 🎉
+**Note**: APK is now available for download
 
 ## Get started
 
