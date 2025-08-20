@@ -7,8 +7,8 @@ This is a dose tracking application built with [Expo](https://expo.dev) and crea
 ## 📱 Download
 
 ### Android APK
-- **Latest Version**: [Download APK v1.0.1](https://github.com/saadpocalypse/dozer/releases/latest/download/app-release.apk)
-- **Direct Download**: [v1.0.1 APK](https://github.com/saadpocalypse/dozer/releases/download/v1.0.1/app-release.apk)
+- **Latest Version**: [Download APK v1.0.1](https://github.com/saadpocalypse/dozer/releases/latest/download/dozer.apk)
+- **Direct Download**: [v1.0.1 APK](https://github.com/saadpocalypse/dozer/releases/download/v1.0.1/dozer.apk)
 - **GitHub Release**: [View Release & Download](https://github.com/saadpocalypse/dozer/releases/tag/v1.0.1)
 
 ### Installation Instructions
