@@ -1,6 +1,22 @@
-# Welcome to your Expo app 👋
+# Dozer - Dose Tracking App 💊
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This is a dose tracking application built with [Expo](https://expo.dev) and created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+
+## 📱 Download
+
+### Android APK
+- **Latest Version**: [Download APK v1.0.1](https://github.com/saadpocalypse/dozer/releases/latest/download/app-release.apk)
+- **Direct Download**: [v1.0.1 APK](https://github.com/saadpocalypse/dozer/releases/download/v1.0.1/app-release.apk)
+
+### Installation Instructions
+1. Download the APK file
+2. Enable "Install from Unknown Sources" in your Android settings
+3. Open the downloaded APK file
+4. Follow the installation prompts
+
+**Note**: APK builds are generated automatically and will be available here once the first build is completed.
 
 ## Get started
 
@@ -48,3 +64,4 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+

@@ -1,20 +1,21 @@
 {
   "expo": {
-    "name": "meds-tracker",
-    "slug": "meds-tracker",
-    "version": "1.0.0",
+    "name": "Dozer",
+    "slug": "dozer",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "medstracker",
+    "scheme": "dozer",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "icon": "./assets/images/icon.png",
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#f8f7ff"
       },
       "edgeToEdgeEnabled": true
     },
@@ -31,12 +32,18 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#f8f7ff"
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "647450de-8b35-414e-a2b8-b4556bf7646c"
+      }
     }
   }
 }
