@@ -1,12 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
-  Alert,
-  FlatList,
-  Pressable,
-  SafeAreaView,
-  Text,
-  View,
+    Alert,
+    FlatList,
+    Pressable,
+    SafeAreaView,
+    StatusBar,
+    Text,
+    View,
 } from "react-native";
 import DosePopup from "../../components/DosePopup";
 
@@ -283,7 +284,8 @@ export default function Home() {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#f8f7ff" }}>
-            <View style={{ paddingHorizontal: 16, paddingTop: 10, flex: 1 }}>
+            <StatusBar barStyle="dark-content" backgroundColor="#f8f7ff" />
+            <View style={{ paddingHorizontal: 16, paddingTop: 60, flex: 1 }}>
                 <Text
                     style={{
                         color: "#8b5cf6",
