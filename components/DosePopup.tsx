@@ -15,6 +15,7 @@ type Med = {
     totalDoses: number;
     doseLogs: any[];
     createdAt: number;
+    reminderHours?: number;
 };
 
 interface DosePopupProps {
@@ -34,6 +35,7 @@ export default function DosePopup({
     const [timesPerDay, setTimesPerDay] = useState("");
     const [totalDoses, setTotalDoses] = useState("");
     const [isIndefinite, setIsIndefinite] = useState(false);
+    const [reminderHours, setReminderHours] = useState("");
 
     useEffect(() => {
         if (editingMed) {
@@ -41,11 +43,13 @@ export default function DosePopup({
             setTimesPerDay(String(editingMed.timesPerDay));
             setTotalDoses(String(editingMed.totalDoses));
             setIsIndefinite(editingMed.totalDoses === -1);
+            setReminderHours(editingMed.reminderHours ? String(editingMed.reminderHours) : "");
         } else {
             setName("");
             setTimesPerDay("");
             setTotalDoses("");
             setIsIndefinite(false);
+            setReminderHours("");
         }
     }, [editingMed, visible]);
 
@@ -62,6 +66,7 @@ export default function DosePopup({
             name: name.trim(),
             timesPerDay: tpd,
             totalDoses: td,
+            reminderHours: Number(reminderHours) || 0,
         });
         onClose();
     }
@@ -179,6 +184,23 @@ export default function DosePopup({
                             Indefinite medication (no total dose limit)
                         </Text>
                     </Pressable>
+
+                    <TextInput
+                        value={reminderHours}
+                        onChangeText={setReminderHours}
+                        placeholder="Reminder in hours (optional)"
+                        placeholderTextColor="#6b7280"
+                        keyboardType="number-pad"
+                        style={{
+                            color: "#7c3aed",
+                            borderColor: "#c4b5fd",
+                            borderWidth: 1,
+                            borderRadius: 12,
+                            paddingHorizontal: 12,
+                            paddingVertical: 10,
+                            marginBottom: 12,
+                        }}
+                    />
 
                     <View style={{ flexDirection: "row", gap: 10 }}>
                         <Pressable

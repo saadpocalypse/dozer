@@ -1,3 +1,6 @@
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { scheduleReminder } from "@/lib/notifications";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -10,6 +13,7 @@ import {
     View,
 } from "react-native";
 import DosePopup from "../../components/DosePopup";
+import SettingsModal from "../../components/SettingsModal";
 
 type DoseLog = { at: number };
 type Med = {
@@ -19,6 +23,7 @@ type Med = {
     totalDoses: number;
     doseLogs: DoseLog[];
     createdAt: number;
+    reminderHours?: number;
 };
 
 const STORAGE_KEY = "meds.v1";
@@ -36,7 +41,9 @@ function since(ms: number) {
 export default function Home() {
     const [meds, setMeds] = useState<Med[]>([]);
     const [popupVisible, setPopupVisible] = useState(false);
+    const [settingsVisible, setSettingsVisible] = useState(false);
     const [editingMed, setEditingMed] = useState<Med | null>(null);
+    const scheme = useColorScheme();
     const [, forceTick] = useState(0);
     const tickRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -88,6 +95,7 @@ export default function Home() {
                               name: medData.name,
                               timesPerDay: medData.timesPerDay,
                               totalDoses: medData.totalDoses,
+                              reminderHours: medData.reminderHours,
                           }
                         : m
                 )
@@ -100,6 +108,7 @@ export default function Home() {
                 totalDoses: medData.totalDoses,
                 doseLogs: [],
                 createdAt: Date.now(),
+                reminderHours: medData.reminderHours,
             };
             setMeds((arr) => [newMed, ...arr]);
         }
@@ -127,6 +136,9 @@ export default function Home() {
                     : x
             )
         );
+        if (m.reminderHours && m.reminderHours > 0) {
+            scheduleReminder(m.name, m.reminderHours * 60 * 60 * 1000).catch(() => {});
+        }
     }
 
     function decrementDose(m: Med) {
@@ -283,12 +295,12 @@ export default function Home() {
     );
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: "#f8f7ff" }}>
-            <StatusBar barStyle="dark-content" backgroundColor="#f8f7ff" />
+        <SafeAreaView style={{ flex: 1, backgroundColor: scheme === 'dark' ? '#0b1220' : "#f8f7ff" }}>
+            <StatusBar barStyle={scheme === 'dark' ? 'light-content' : 'dark-content'} backgroundColor={scheme === 'dark' ? '#0b1220' : "#f8f7ff"} />
             <View style={{ paddingHorizontal: 16, paddingTop: 60, flex: 1 }}>
                 <Text
                     style={{
-                        color: "#8b5cf6",
+                        color: scheme === 'dark' ? '#a78bfa' : "#8b5cf6",
                         fontSize: 24,
                         fontWeight: "800",
                         marginBottom: 12,
@@ -296,6 +308,15 @@ export default function Home() {
                 >
                     Dozer
                 </Text>
+                <Pressable
+                    onPress={() => setSettingsVisible(true)}
+                    style={{ position: 'absolute', top: 60, right: 16, padding: 6 }}
+                    hitSlop={10}
+                >
+                    <MaterialIcons name="settings" size={24} color={scheme === 'dark' ? '#a78bfa' : '#8b5cf6'} />
+                </Pressable>
+
+                
 
                 <FlatList
                     data={sorted}
@@ -362,6 +383,10 @@ export default function Home() {
                 onClose={closePopup}
                 onSave={saveMed}
                 editingMed={editingMed}
+            />
+            <SettingsModal
+                visible={settingsVisible}
+                onClose={() => setSettingsVisible(false)}
             />
         </SafeAreaView>
     );
