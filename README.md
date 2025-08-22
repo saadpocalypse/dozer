@@ -7,15 +7,31 @@ This is a dose tracking application built with [Expo](https://expo.dev) and crea
 ## Download
 
 ### Android APK
-- **Latest Version**: [Download APK v1.0.1](https://github.com/saadpocalypse/dozer/releases/latest/download/dozer.apk)
-- **Direct Download**: [v1.0.1 APK](https://github.com/saadpocalypse/dozer/releases/download/v1.0.1/dozer.apk)
-- **GitHub Release**: [View Release & Download](https://github.com/saadpocalypse/dozer/releases/tag/v1.0.1)
+- **Latest Version**: [Download APK v2.0.0](https://github.com/saadpocalypse/dozer/releases/latest/download/dozer.apk)
+- **Direct Download**: [v2.0.0 APK](https://github.com/saadpocalypse/dozer/releases/download/v2.0.0/dozer.apk)
+- **GitHub Release**: [View Release & Download](https://github.com/saadpocalypse/dozer/releases/tag/v2.0.0)
 
 ### Installation Instructions
 1. Download the APK file from the links above
 2. Enable "Install from Unknown Sources" in your Android settings
 3. Open the downloaded APK file
 4. Follow the installation prompts
+
+## What's New in v2.0.0
+
+🎨 **Dark Mode Theme**
+- Toggle between light and dark themes
+- Persistent theme preference storage
+- Settings modal with easy theme switching
+
+🔔 **Medication Reminders**
+- Set reminder hours for each medication
+- Automatic notification scheduling when doses are taken
+- Android-optimized notifications with high priority
+
+⚙️ **Enhanced Settings**
+- Dedicated settings modal accessible from the home screen
+- Clean, intuitive interface for app customization
 
 **Note**: APK is now available for download
 
