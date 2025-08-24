@@ -19,17 +19,17 @@ This is a dose tracking application built with [Expo](https://expo.dev) and crea
 
 ## What's New in v2.0.0
 
-🎨 **Dark Mode Theme**
+**Dark Mode Theme**
 - Toggle between light and dark themes
 - Persistent theme preference storage
 - Settings modal with easy theme switching
 
-🔔 **Medication Reminders**
+**Medication Reminders**
 - Set reminder hours for each medication
 - Automatic notification scheduling when doses are taken
 - Android-optimized notifications with high priority
 
-⚙️ **Enhanced Settings**
+**Enhanced Settings**
 - Dedicated settings modal accessible from the home screen
 - Clean, intuitive interface for app customization
 
