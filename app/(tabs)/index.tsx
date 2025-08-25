@@ -126,18 +126,32 @@ export default function Home() {
     }
 
     function incrementDose(m: Med) {
+        const now = Date.now();
+        const lastDoseTime = m.doseLogs[0]?.at;
+        
         setMeds((arr) =>
             arr.map((x) =>
                 x.id === m.id
                     ? {
                           ...x,
-                          doseLogs: [{ at: Date.now() }, ...x.doseLogs],
+                          doseLogs: [{ at: now }, ...x.doseLogs],
                       }
                     : x
             )
         );
-        if (m.reminderHours && m.reminderHours > 0) {
-            scheduleReminder(m.name, m.reminderHours * 60 * 60 * 1000).catch(() => {});
+        
+        // Only schedule reminder if:
+        // 1. Reminder hours are configured
+        // 2. There was a previous dose taken
+        // 3. Enough time has passed since the last dose
+        if (m.reminderHours && m.reminderHours > 0 && lastDoseTime) {
+            const timeSinceLastDose = now - lastDoseTime;
+            const reminderDelay = m.reminderHours * 60 * 60 * 1000;
+            
+            // Only schedule if the last dose was taken more than the reminder interval ago
+            if (timeSinceLastDose >= reminderDelay) {
+                scheduleReminder(m.name, reminderDelay).catch(() => {});
+            }
         }
     }
 
@@ -171,12 +185,16 @@ export default function Home() {
         return (
             <View
                 style={{
-                    backgroundColor: complete ? "#ecfdf5" : "#fef7ff",
+                    backgroundColor: complete 
+                        ? (scheme === 'dark' ? '#064e3b' : "#ecfdf5") 
+                        : (scheme === 'dark' ? '#1e1b4b' : "#fef7ff"),
                     borderRadius: 16,
                     padding: 14,
                     marginBottom: 12,
                     borderWidth: 1,
-                    borderColor: complete ? "#a7f3d0" : "#e9d5ff",
+                    borderColor: complete 
+                        ? (scheme === 'dark' ? '#10b981' : "#a7f3d0") 
+                        : (scheme === 'dark' ? '#7c3aed' : "#e9d5ff"),
                 }}
             >
                 <View
@@ -188,19 +206,28 @@ export default function Home() {
                 >
                     <Text
                         style={{
-                            color: "#7c3aed",
+                            color: scheme === 'dark' ? '#a78bfa' : "#7c3aed",
                             fontSize: 18,
                             fontWeight: "700",
                         }}
                     >
                         {m.name}
                     </Text>
-                    <Text style={{ color: complete ? "#059669" : "#8b5cf6" }}>
+                    <Text style={{ 
+                        color: complete 
+                            ? (scheme === 'dark' ? '#10b981' : "#059669") 
+                            : (scheme === 'dark' ? '#a78bfa' : "#8b5cf6") 
+                    }}>
                         {dailySoFar(m)}/{m.timesPerDay} today • {m.totalDoses === -1 ? "∞ doses" : m.doseLogs.length >= m.totalDoses ? `${m.doseLogs.length - m.totalDoses} extra taken` : `${remaining(m)} left`}
                     </Text>
                 </View>
 
-                <Text style={{ color: complete ? "#059669" : "#8b5cf6", marginTop: 6 }}>
+                <Text style={{ 
+                    color: complete 
+                        ? (scheme === 'dark' ? '#10b981' : "#059669") 
+                        : (scheme === 'dark' ? '#a78bfa' : "#8b5cf6"), 
+                    marginTop: 6 
+                }}>
                     Last taken:{" "}
                     {last
                         ? `${new Date(last).toLocaleTimeString('en-US', { 
@@ -269,11 +296,20 @@ export default function Home() {
 
                 {m.doseLogs.length > 0 && (
                     <View style={{ marginTop: 10 }}>
-                        <Text style={{ color: complete ? "#059669" : "#8b5cf6", marginBottom: 4 }}>
+                        <Text style={{ 
+                            color: complete 
+                                ? (scheme === 'dark' ? '#10b981' : "#059669") 
+                                : (scheme === 'dark' ? '#a78bfa' : "#8b5cf6"), 
+                            marginBottom: 4 
+                        }}>
                             Recent doses:
                         </Text>
                         {m.doseLogs.slice(0, 5).map((d, i) => (
-                            <Text key={i} style={{ color: complete ? "#10b981" : "#a78bfa" }}>
+                            <Text key={i} style={{ 
+                                color: complete 
+                                    ? (scheme === 'dark' ? '#34d399' : "#10b981") 
+                                    : (scheme === 'dark' ? '#c4b5fd' : "#a78bfa") 
+                            }}>
                                 • {new Date(d.at).toLocaleString('en-US', { 
                                     month: 'short', 
                                     day: 'numeric', 
@@ -330,7 +366,7 @@ export default function Home() {
                             paddingTop: 100
                         }}>
                             <Text style={{ 
-                                color: "#a78bfa", 
+                                color: scheme === 'dark' ? '#a78bfa' : "#a78bfa", 
                                 fontSize: 18,
                                 textAlign: 'center'
                             }}>

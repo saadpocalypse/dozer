@@ -7,6 +7,7 @@ import {
     TextInput,
     View,
 } from "react-native";
+import { useColorScheme } from "@/hooks/useColorScheme";
 
 type Med = {
     id: string;
@@ -36,6 +37,8 @@ export default function DosePopup({
     const [totalDoses, setTotalDoses] = useState("");
     const [isIndefinite, setIsIndefinite] = useState(false);
     const [reminderHours, setReminderHours] = useState("");
+    const scheme = useColorScheme();
+    const isDark = scheme === 'dark';
 
     useEffect(() => {
         if (editingMed) {
@@ -86,16 +89,16 @@ export default function DosePopup({
                 paddingHorizontal: 20,
             }}>
                 <View style={{
-                    backgroundColor: "#fef7ff",
+                    backgroundColor: isDark ? "#1e1b4b" : "#fef7ff",
                     borderRadius: 16,
                     padding: 20,
                     borderWidth: 1,
-                    borderColor: "#e9d5ff",
+                    borderColor: isDark ? "#7c3aed" : "#e9d5ff",
                     width: '100%',
                     maxWidth: 400,
                 }}>
                     <Text style={{
-                        color: "#7c3aed",
+                        color: isDark ? "#a78bfa" : "#7c3aed",
                         fontSize: 20,
                         fontWeight: "700",
                         marginBottom: 20,
@@ -108,15 +111,16 @@ export default function DosePopup({
                         value={name}
                         onChangeText={setName}
                         placeholder="Dose name"
-                        placeholderTextColor="#6b7280"
+                        placeholderTextColor={isDark ? "#9ca3af" : "#6b7280"}
                         style={{
-                            color: "#7c3aed",
-                            borderColor: "#c4b5fd",
+                            color: isDark ? "#a78bfa" : "#7c3aed",
+                            borderColor: isDark ? "#7c3aed" : "#c4b5fd",
                             borderWidth: 1,
                             borderRadius: 12,
                             paddingHorizontal: 12,
                             paddingVertical: 10,
                             marginBottom: 12,
+                            backgroundColor: isDark ? "#312e81" : "white",
                         }}
                     />
 
@@ -125,32 +129,34 @@ export default function DosePopup({
                             value={timesPerDay}
                             onChangeText={setTimesPerDay}
                             placeholder="Doses/day"
-                            placeholderTextColor="#6b7280"
+                            placeholderTextColor={isDark ? "#9ca3af" : "#6b7280"}
                             keyboardType="number-pad"
                             style={{
                                 flex: 1,
-                                color: "#7c3aed",
-                                borderColor: "#c4b5fd",
+                                color: isDark ? "#a78bfa" : "#7c3aed",
+                                borderColor: isDark ? "#7c3aed" : "#c4b5fd",
                                 borderWidth: 1,
                                 borderRadius: 12,
                                 paddingHorizontal: 12,
                                 paddingVertical: 10,
+                                backgroundColor: isDark ? "#312e81" : "white",
                             }}
                         />
                         <TextInput
                             value={totalDoses}
                             onChangeText={setTotalDoses}
                             placeholder="Total doses"
-                            placeholderTextColor="#6b7280"
+                            placeholderTextColor={isDark ? "#9ca3af" : "#6b7280"}
                             keyboardType="number-pad"
                             style={{
                                 flex: 1,
-                                color: "#7c3aed",
-                                borderColor: "#c4b5fd",
+                                color: isDark ? "#a78bfa" : "#7c3aed",
+                                borderColor: isDark ? "#7c3aed" : "#c4b5fd",
                                 borderWidth: 1,
                                 borderRadius: 12,
                                 paddingHorizontal: 12,
                                 paddingVertical: 10,
+                                backgroundColor: isDark ? "#312e81" : "white",
                             }}
                             editable={!isIndefinite}
                         />
@@ -170,7 +176,7 @@ export default function DosePopup({
                             height: 20,
                             borderRadius: 4,
                             borderWidth: 2,
-                            borderColor: "#c4b5fd",
+                            borderColor: isDark ? "#7c3aed" : "#c4b5fd",
                             backgroundColor: isIndefinite ? "#a78bfa" : "transparent",
                             marginRight: 8,
                             alignItems: 'center',
@@ -180,7 +186,7 @@ export default function DosePopup({
                                 <Text style={{ color: "white", fontSize: 14, fontWeight: "bold" }}>✓</Text>
                             )}
                         </View>
-                        <Text style={{ color: "#7c3aed", fontSize: 16 }}>
+                        <Text style={{ color: isDark ? "#a78bfa" : "#7c3aed", fontSize: 16 }}>
                             Indefinite medication (no total dose limit)
                         </Text>
                     </Pressable>
@@ -189,16 +195,17 @@ export default function DosePopup({
                         value={reminderHours}
                         onChangeText={setReminderHours}
                         placeholder="Reminder in hours (optional)"
-                        placeholderTextColor="#6b7280"
+                        placeholderTextColor={isDark ? "#9ca3af" : "#6b7280"}
                         keyboardType="number-pad"
                         style={{
-                            color: "#7c3aed",
-                            borderColor: "#c4b5fd",
+                            color: isDark ? "#a78bfa" : "#7c3aed",
+                            borderColor: isDark ? "#7c3aed" : "#c4b5fd",
                             borderWidth: 1,
                             borderRadius: 12,
                             paddingHorizontal: 12,
                             paddingVertical: 10,
                             marginBottom: 12,
+                            backgroundColor: isDark ? "#312e81" : "white",
                         }}
                     />
 
@@ -207,12 +214,16 @@ export default function DosePopup({
                             onPress={onClose}
                             style={{
                                 flex: 1,
-                                backgroundColor: "#e9d5ff",
+                                backgroundColor: isDark ? "#312e81" : "#e9d5ff",
                                 paddingVertical: 12,
                                 borderRadius: 12,
                             }}
                         >
-                            <Text style={{ color: "#7c3aed", textAlign: 'center', fontWeight: '600' }}>
+                            <Text style={{ 
+                                color: isDark ? "#a78bfa" : "#7c3aed", 
+                                textAlign: 'center', 
+                                fontWeight: '600' 
+                            }}>
                                 Cancel
                             </Text>
                         </Pressable>

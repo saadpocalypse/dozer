@@ -26,7 +26,7 @@ export default function SettingsModal({ visible, onClose }: Props) {
 					<View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
 						<Text style={{ fontSize: 18, fontWeight: '700', color: isDark ? 'white' : 'black' }}>Settings</Text>
 						<Pressable onPress={onClose}>
-							<Text style={{ color: isDark ? '#a5b4fc' : '#6366f1', fontWeight: '600' }}>Close</Text>
+							<Text style={{ color: isDark ? '#a78bfa' : '#6366f1', fontWeight: '600' }}>Close</Text>
 						</Pressable>
 					</View>
 
